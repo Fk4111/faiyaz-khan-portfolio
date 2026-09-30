@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="50%" stop-color="#0c0e14"/>
+      <stop offset="100%" stop-color="#08090d"/>
+    </linearGradient>
+
+    <!-- Studio Glow -->
+    <radialGradient id="studioGlow" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.22"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Skin Gradients -->
+    <linearGradient id="skinBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="60%" stop-color="#fba868"/>
+      <stop offset="100%" stop-color="#df8a48"/>
+    </linearGradient>
+
+    <linearGradient id="skinShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e28743" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#9a4d18" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Royal Blue Shirt Gradient (matching user's blue athletic t-shirt) -->
+    <linearGradient id="shirtBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="35%" stop-color="#1d4ed8"/>
+      <stop offset="70%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+
+    <linearGradient id="shirtDetail" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Hair Gradient -->
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#262626"/>
+      <stop offset="40%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+
+    <!-- Subtle Stubble / Beard Texture -->
+    <radialGradient id="stubbleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1c1917" stop-opacity="0.35"/>
+      <stop offset="85%" stop-color="#1c1917" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1c1917" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="650" fill="url(#bgGrad)"/>
+  <rect width="500" height="650" fill="url(#studioGlow)"/>
+
+  <!-- Subtle ambient halo rim -->
+  <circle cx="250" cy="270" r="190" fill="none" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.25" stroke-dasharray="8 6"/>
+  <circle cx="250" cy="270" r="215" fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.18"/>
+
+  <!-- Shoulders & Royal Blue Athletic T-shirt -->
+  <g id="clothing">
+    <!-- Main Shirt Body -->
+    <path d="M 60 650 L 110 500 Q 150 455 210 448 L 250 455 L 290 448 Q 350 455 390 500 L 440 650 Z" fill="url(#shirtBlue)"/>
+    <!-- Collar Line -->
+    <path d="M 195 448 Q 250 488 305 448 Q 285 500 250 502 Q 215 500 195 448 Z" fill="#172554"/>
+    <path d="M 198 450 Q 250 482 302 450" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Athletic Seam Accents (matching sporty blue crew neck shirt) -->
+    <path d="M 145 470 Q 185 520 200 650" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.6"/>
+    <path d="M 355 470 Q 315 520 300 650" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-opacity="0.6"/>
+    <path d="M 115 510 L 80 650" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+    <path d="M 385 510 L 420 650" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+  </g>
+
+  <!-- Neck -->
+  <g id="neck">
+    <path d="M 205 380 L 205 465 Q 250 485 295 465 L 295 380 Z" fill="url(#skinBase)"/>
+    <!-- Neck shadow under chin -->
+    <path d="M 205 380 Q 250 425 295 380 L 295 405 Q 250 440 205 405 Z" fill="#b45309" fill-opacity="0.3"/>
+    <path d="M 220 420 Q 250 450 280 420" fill="none" stroke="#b45309" stroke-width="2" stroke-opacity="0.25"/>
+  </g>
+
+  <!-- Head & Ears -->
+  <g id="head">
+    <!-- Left Ear -->
+    <path d="M 160 270 Q 140 295 155 335 Q 165 350 175 340 Z" fill="#fba868"/>
+    <path d="M 158 285 Q 150 305 160 325" fill="none" stroke="#c2410c" stroke-width="1.5" stroke-opacity="0.4"/>
+
+    <!-- Right Ear -->
+    <path d="M 340 270 Q 360 295 345 335 Q 335 350 325 340 Z" fill="#fba868"/>
+    <path d="M 342 285 Q 350 305 340 325" fill="none" stroke="#c2410c" stroke-width="1.5" stroke-opacity="0.4"/>
+
+    <!-- Face Oval -->
+    <path d="M 170 250 Q 170 170 250 165 Q 330 170 330 250 Q 330 335 295 380 Q 250 410 205 380 Q 170 335 170 250 Z" fill="url(#skinBase)"/>
+
+    <!-- Cheek & Jaw Shading -->
+    <path d="M 172 260 Q 175 340 210 380 Q 185 330 178 260 Z" fill="#c2410c" fill-opacity="0.15"/>
+    <path d="M 328 260 Q 325 340 290 380 Q 315 330 322 260 Z" fill="#c2410c" fill-opacity="0.15"/>
+
+    <!-- Eyes -->
+    <g id="eyes">
+      <!-- Left Eye -->
+      <path d="M 195 272 Q 215 264 235 274 Q 215 282 195 272 Z" fill="#ffffff"/>
+      <circle cx="216" cy="272" r="6.5" fill="#1c1917"/>
+      <circle cx="216" cy="272" r="3.5" fill="#09090b"/>
+      <circle cx="218" cy="270" r="1.5" fill="#ffffff"/>
+      <!-- Left Eyelid & Crease -->
+      <path d="M 193 270 Q 215 260 237 272" fill="none" stroke="#78350f" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 197 262 Q 215 256 233 264" fill="none" stroke="#78350f" stroke-width="1" stroke-opacity="0.5"/>
+
+      <!-- Right Eye -->
+      <path d="M 265 274 Q 285 264 305 272 Q 285 282 265 274 Z" fill="#ffffff"/>
+      <circle cx="284" cy="272" r="6.5" fill="#1c1917"/>
+      <circle cx="284" cy="272" r="3.5" fill="#09090b"/>
+      <circle cx="286" cy="270" r="1.5" fill="#ffffff"/>
+      <!-- Right Eyelid & Crease -->
+      <path d="M 263 272 Q 285 260 307 270" fill="none" stroke="#78350f" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 267 264 Q 285 256 303 262" fill="none" stroke="#78350f" stroke-width="1" stroke-opacity="0.5"/>
+
+      <!-- Eyebrows (neatly styled dark brows) -->
+      <path d="M 188 252 Q 212 242 238 250" fill="none" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M 262 250 Q 288 242 312 252" fill="none" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Nose -->
+    <g id="nose">
+      <path d="M 248 255 L 244 310 Q 242 320 250 322 Q 258 320 256 310 Z" fill="#ea580c" fill-opacity="0.12"/>
+      <path d="M 242 318 Q 250 324 258 318" fill="none" stroke="#9a3412" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="239" cy="317" rx="3.5" ry="2" fill="#7c2d12" fill-opacity="0.4"/>
+      <ellipse cx="261" cy="317" rx="3.5" ry="2" fill="#7c2d12" fill-opacity="0.4"/>
+    </g>
+
+    <!-- Stubble & Goatee Area (matching Faiyaz's authentic photo) -->
+    <g id="beard">
+      <ellipse cx="250" cy="360" rx="42" ry="32" fill="url(#stubbleGrad)"/>
+      <path d="M 230 338 Q 250 342 270 338 Q 260 348 240 348 Z" fill="#1c1917" fill-opacity="0.25"/>
+      <path d="M 240 375 Q 250 382 260 375 Q 255 392 245 392 Z" fill="#1c1917" fill-opacity="0.3"/>
+    </g>
+
+    <!-- Lips / Smile -->
+    <g id="mouth">
+      <!-- Upper Lip -->
+      <path d="M 228 346 Q 240 343 250 346 Q 260 343 272 346 Q 250 352 228 346 Z" fill="#b91c1c" fill-opacity="0.45"/>
+      <!-- Lower Lip -->
+      <path d="M 231 347 Q 250 362 269 347 Q 250 357 231 347 Z" fill="#ef4444" fill-opacity="0.38"/>
+      <!-- Mouth line -->
+      <path d="M 227 346 Q 250 350 273 346" fill="none" stroke="#7f1d1d" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Hair (styled textured black hair, swept slightly to the right matching photo) -->
+    <g id="hair">
+      <path d="M 162 260 Q 155 210 180 160 Q 215 115 270 120 Q 325 125 340 175 Q 350 220 338 260 Q 325 210 295 195 Q 255 190 205 200 Q 175 220 162 260 Z" fill="url(#hairGrad)"/>
+      <!-- Volume & Texture Strands -->
+      <path d="M 190 150 Q 240 125 285 145" fill="none" stroke="#404040" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 215 135 Q 265 120 305 140" fill="none" stroke="#525252" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 175 190 Q 210 160 250 165" fill="none" stroke="#404040" stroke-width="2" stroke-linecap="round"/>
+      <!-- Sideburns -->
+      <path d="M 166 240 L 165 275 L 172 265 Z" fill="#171717"/>
+      <path d="M 334 240 L 335 275 L 328 265 Z" fill="#171717"/>
+    </g>
+  </g>
+
+  <!-- Modern UI tech badges & verified status in bottom corners -->
+  <g id="badge">
+    <rect x="30" y="585" width="135" height="36" rx="10" fill="#09090b" fill-opacity="0.9" stroke="#27272a" stroke-width="1"/>
+    <circle cx="50" cy="603" r="5" fill="#10b981"/>
+    <text x="65" y="607" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#f4f4f5">MERN Dev</text>
+  </g>
+
+  <g id="locationBadge">
+    <rect x="335" y="585" width="135" height="36" rx="10" fill="#09090b" fill-opacity="0.9" stroke="#27272a" stroke-width="1"/>
+    <text x="360" y="607" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500" fill="#a1a1aa">📍 Mumbai, IN</text>
+  </g>
+</svg>
