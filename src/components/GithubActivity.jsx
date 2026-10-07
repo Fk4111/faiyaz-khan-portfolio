@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { siteConfig } from "../data/site.js";
-import { 
-  Github, 
-  GitFork, 
-  Star, 
-  ExternalLink, 
-  Code2, 
-  GitCommit, 
-  Activity, 
-  Terminal,
-  Calendar
+import {
+  Github,
+  GitFork,
+  Star,
+  ExternalLink,
+  Code2,
+  Activity
 } from "lucide-react";
 
-// CONFIGURATION VARIABLE: Update your username here or in src/data/site.js
 const GITHUB_USERNAME = siteConfig.GITHUB_USERNAME || "khanfaiyaz359";
 
 export default function GithubActivity() {
@@ -20,7 +16,6 @@ export default function GithubActivity() {
   const [loading, setLoading] = useState(true);
   const [selectedDay, setSelectedDay] = useState(null);
 
-  // Default repositories representing real projects
   const fallbackRepos = [
     {
       id: 1,
@@ -41,7 +36,7 @@ export default function GithubActivity() {
       languageColor: "#3178c6",
       stars: 6,
       forks: 2,
-      html_url: "https://github.com/khanfaiyaz359/aptechnosys-website",
+      html_url: `https://github.com/${GITHUB_USERNAME}/aptechnosys-website`,
       updated_at: "Recent"
     },
     {
@@ -69,32 +64,38 @@ export default function GithubActivity() {
   ];
 
   useEffect(() => {
-    // Attempt to fetch public repositories; gracefully fallback if rate-limited or offline
     const fetchGithubData = async () => {
       try {
-        const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=4`);
+        const res = await fetch(
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=4`
+        );
+
         if (res.ok) {
           const data = await res.json();
+
           if (Array.isArray(data) && data.length > 0) {
             const mapped = data.map((r) => ({
               id: r.id,
               name: r.name,
               description: r.description || "Full-stack development repository.",
               language: r.language || "JavaScript",
-              languageColor: r.language === "TypeScript" ? "#3178c6" : "#f7df1e",
+              languageColor:
+                r.language === "TypeScript" ? "#3178c6" : "#f7df1e",
               stars: r.stargazers_count,
               forks: r.forks_count,
               html_url: r.html_url,
               updated_at: new Date(r.updated_at).toLocaleDateString()
             }));
+
             setRepos(mapped);
             setLoading(false);
             return;
           }
         }
       } catch (err) {
-        // Fallback to pre-configured authentic repositories
+        // Use fallback repositories when GitHub API is unavailable.
       }
+
       setRepos(fallbackRepos);
       setLoading(false);
     };
@@ -102,28 +103,34 @@ export default function GithubActivity() {
     fetchGithubData();
   }, []);
 
-  // Generate a deterministic 52-week contribution heatmap matrix (7 rows x 26 visible columns on desktop)
   const generateContributionWeeks = () => {
     const weeks = [];
+
     const seedWeights = [
-      0, 1, 2, 0, 3, 2, 4, 1, 0, 2, 3, 4, 2, 1, 0, 3, 4, 2, 1, 3, 0, 2, 4, 3, 1, 2, 0,
-      1, 3, 4, 2, 0, 1, 2, 3, 4, 1, 2, 0, 3, 2, 4, 1, 0, 3, 2, 1, 4, 3, 2, 1, 0
+      0, 1, 2, 0, 3, 2, 4, 1, 0, 2, 3, 4, 2, 1, 0, 3,
+      4, 2, 1, 3, 0, 2, 4, 3, 1, 2, 0, 1, 3, 4, 2, 0,
+      1, 2, 3, 4, 1, 2, 0, 3, 2, 4, 1, 0, 3, 2, 1, 4,
+      3, 2, 1, 0
     ];
 
     for (let w = 0; w < 32; w++) {
       const days = [];
+
       for (let d = 0; d < 7; d++) {
         const base = seedWeights[(w * 7 + d) % seedWeights.length];
         const count = base === 0 ? 0 : base * 2 + ((w + d) % 3);
+
         days.push({
           day: d,
           week: w,
-          count: count,
-          level: base // 0 to 4
+          count,
+          level: base
         });
       }
+
       weeks.push(days);
     }
+
     return weeks;
   };
 
@@ -140,25 +147,30 @@ export default function GithubActivity() {
       case 4:
         return "bg-emerald-400 border-emerald-300";
       default:
-        return "bg-zinc-900 border-zinc-800/60";
+        return "bg-[var(--surface-hover)] border-[var(--border)]";
     }
   };
 
   return (
-    <section id="github" className="py-24 relative bg-[#09090b] border-t border-zinc-900">
+    <section
+      id="github"
+      className="py-24 relative bg-[var(--bg-primary)] border-t border-[var(--border)]"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 tracking-wider uppercase mb-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-500 tracking-wider uppercase mb-2">
               <span className="w-6 h-[1px] bg-emerald-500" />
               <span>Open Source & Activity</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-display tracking-tight">
+
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] font-display tracking-tight">
               GitHub & Code Activity
             </h2>
-            <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-xl">
+
+            <p className="mt-2 text-[var(--text-secondary)] text-sm sm:text-base max-w-xl">
               Consistent commit hygiene, clean architecture, and continuous development tracking on GitHub.
             </p>
           </div>
@@ -167,27 +179,28 @@ export default function GithubActivity() {
             href={siteConfig.socials.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border border-zinc-700/80 text-xs font-medium transition-colors self-start md:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--border-hover)] text-xs font-medium transition-colors self-start md:self-auto"
           >
-            <Github className="w-4 h-4 text-emerald-400" />
+            <Github className="w-4 h-4 text-emerald-500" />
             <span>@{GITHUB_USERNAME} on GitHub</span>
-            <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+            <ExternalLink className="w-3.5 h-3.5 text-[var(--text-muted)]" />
           </a>
         </div>
 
-        {/* Contribution Heatmap Card */}
-        <div className="p-6 sm:p-7 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 mb-8 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-800/80">
+        {/* Contribution Heatmap */}
+        <div className="p-6 sm:p-7 rounded-2xl bg-[var(--surface)] border border-[var(--border)] mb-8 space-y-4">
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border)]">
             <div className="flex items-center gap-2">
-              <Activity className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-semibold text-zinc-200">
+              <Activity className="w-4 h-4 text-emerald-500" />
+              <span className="text-sm font-semibold text-[var(--text-primary)]">
                 Development Activity Matrix
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono">
+            <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)] font-mono">
               <span>Less</span>
-              <span className="w-3 h-3 rounded-sm bg-zinc-900 border border-zinc-800" />
+              <span className="w-3 h-3 rounded-sm bg-[var(--surface-hover)] border border-[var(--border)]" />
               <span className="w-3 h-3 rounded-sm bg-emerald-950 border border-emerald-900" />
               <span className="w-3 h-3 rounded-sm bg-emerald-800 border border-emerald-700" />
               <span className="w-3 h-3 rounded-sm bg-emerald-600 border border-emerald-500" />
@@ -196,7 +209,7 @@ export default function GithubActivity() {
             </div>
           </div>
 
-          {/* Matrix Container */}
+          {/* Matrix */}
           <div className="overflow-x-auto pb-2 scrollbar-none">
             <div className="inline-flex gap-1 min-w-[640px]">
               {contributionWeeks.map((week, wIdx) => (
@@ -217,25 +230,27 @@ export default function GithubActivity() {
             </div>
           </div>
 
-          {/* Matrix summary & tooltip */}
-          <div className="flex items-center justify-between text-xs text-zinc-400 pt-2 border-t border-zinc-800/60">
+          {/* Matrix Summary */}
+          <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] pt-2 border-t border-[var(--border)]">
             <div>
               {selectedDay ? (
-                <span className="text-emerald-400 font-mono">
+                <span className="text-emerald-500 font-mono">
                   {selectedDay.count} commits recorded in week {selectedDay.week + 1}
                 </span>
               ) : (
-                <span className="font-mono text-zinc-400">Regular active repository contributions</span>
+                <span className="font-mono text-[var(--text-secondary)]">
+                  Regular active repository contributions
+                </span>
               )}
             </div>
 
-            <div className="flex items-center gap-4 font-mono text-[11px] text-zinc-400">
+            <div className="flex items-center gap-4 font-mono text-[11px] text-[var(--text-secondary)]">
               <span>Primary: JavaScript / React / Node</span>
             </div>
           </div>
         </div>
 
-        {/* Repositories Showcase Grid */}
+        {/* Repository Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {repos.map((repo) => (
             <a
@@ -243,25 +258,27 @@ export default function GithubActivity() {
               href={repo.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-5 rounded-xl bg-zinc-900/50 hover:bg-zinc-900/90 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 flex flex-col justify-between"
+              className="group p-5 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-hover)] border border-[var(--border)] hover:border-[var(--border-hover)] transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <Code2 className="w-4 h-4 text-emerald-400" />
-                    <span className="font-semibold text-sm text-zinc-200 group-hover:text-white transition-colors">
+                    <Code2 className="w-4 h-4 text-emerald-500" />
+
+                    <span className="font-semibold text-sm text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors">
                       {repo.name}
                     </span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-300 transition-colors" />
+
+                  <ExternalLink className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors" />
                 </div>
 
-                <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
                   {repo.description}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-400">
+              <div className="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text-secondary)]">
                 <div className="flex items-center gap-2">
                   <span
                     className="w-2.5 h-2.5 rounded-full"
@@ -275,8 +292,9 @@ export default function GithubActivity() {
                     <Star className="w-3.5 h-3.5 text-amber-400/80" />
                     <span>{repo.stars}</span>
                   </span>
+
                   <span className="flex items-center gap-1">
-                    <GitFork className="w-3.5 h-3.5 text-zinc-400" />
+                    <GitFork className="w-3.5 h-3.5 text-[var(--text-muted)]" />
                     <span>{repo.forks}</span>
                   </span>
                 </div>

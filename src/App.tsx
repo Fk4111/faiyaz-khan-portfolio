@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
@@ -13,43 +13,64 @@ import ResumeModal from "./components/ResumeModal.jsx";
 
 export default function App() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setTheme(savedTheme);
+      return;
+    }
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }, []);
+
+  useEffect(() => {
+    if (!theme) return;
+
+    const root = document.documentElement;
+    root.classList.add("theme-transition");
+
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+
+    localStorage.setItem("portfolio-theme", theme);
+
+    const timeout = setTimeout(() => root.classList.remove("theme-transition"), 300);
+    return () => clearTimeout(timeout);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => currentTheme === "dark" ? "light" : "dark");
+  };
+
+  if (!theme) {
+    return <div className="min-h-screen" style={{ backgroundColor: "#f8fafc" }} />;
+  }
 
   return (
-    <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-emerald-500/20 selection:text-emerald-300 font-sans">
-      {/* Fixed Navigation */}
-      <Navbar onOpenResume={() => setResumeModalOpen(true)} />
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-emerald-500/20 selection:text-emerald-600 font-sans transition-colors duration-300">
+      <Navbar
+        onOpenResume={() => setResumeModalOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
-      {/* Main Single-Page Content Flow */}
       <main id="main-content" className="relative">
-        {/* 1. Hero Section */}
         <Hero onOpenResume={() => setResumeModalOpen(true)} />
-
-        {/* 2. About Me Section */}
         <About />
-
-        {/* 3. Tech Stack Section */}
         <TechStack />
-
-        {/* 4. Experience Timeline */}
         <Experience />
-
-        {/* 5. Featured Projects Showcase */}
         <Projects />
-
-        {/* 6. What I Build / Services */}
         <Services />
-
-        {/* 7. GitHub & Activity */}
         <GithubActivity />
-
-        {/* 8. Contact Section */}
         <Contact />
       </main>
 
-      {/* Footer */}
       <Footer />
 
-      {/* Resume Modal */}
       <ResumeModal
         isOpen={resumeModalOpen}
         onClose={() => setResumeModalOpen(false)}
