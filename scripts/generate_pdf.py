@@ -21,7 +21,7 @@ def create_resume_pdf(output_path):
         "(CURRENT WORK EXPERIENCE) Tj",
         "/F2 9 Tf",
         "0 -14 Td",
-        "(Aptechnosys - Jr Full Stack Developer | Mumbai  [March 2025 - Present]) Tj",
+        "(Aptechnosys - Full Stack Developer | Mumbai  [March 2025 - Present]) Tj",
         "0 -12 Td",
         "(- Building modern, scalable web applications using React.js, Next.js, Node.js, Express.js, REST API, MongoDB) Tj",
         "0 -11 Td",

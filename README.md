@@ -1,6 +1,6 @@
 # Faiyaz Khan — MERN Stack Developer Portfolio
 
-A modern, high-performance developer portfolio website built for **Faiyaz Khan** (Jr Full Stack Developer @ Aptechnosys, Mumbai).
+A modern, high-performance developer portfolio website built for **Faiyaz Khan** (Full Stack Developer @ Aptechnosys, Mumbai).
 
 ## 🚀 Key Features
 

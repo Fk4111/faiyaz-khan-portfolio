@@ -60,7 +60,7 @@ export default function About() {
           <div className="lg:col-span-7 space-y-5 text-zinc-300 text-sm sm:text-base leading-relaxed">
             <div className="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 shadow-sm space-y-4">
               <p>
-                I am a <strong className="text-white font-semibold">Jr Full Stack Developer at Aptechnosys</strong> based in Mumbai with <strong className="text-emerald-400 font-semibold">1.5+ years of practical development experience</strong>. My daily work revolves around turning business workflows into clean, dependable software using <strong className="text-zinc-100">React.js, Next.js, Node.js, and MongoDB</strong>.
+                I am a <strong className="text-white font-semibold">Full Stack Developer at Aptechnosys</strong> based in Mumbai with <strong className="text-emerald-400 font-semibold">1.5+ years of practical development experience</strong>. My daily work revolves around turning business workflows into clean, dependable software using <strong className="text-zinc-100">React.js, Next.js, Node.js, and MongoDB</strong>.
               </p>
 
               <p>

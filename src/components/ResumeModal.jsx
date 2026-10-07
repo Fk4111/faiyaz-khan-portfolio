@@ -170,7 +170,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             <div className="space-y-1.5">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between">
                 <h3 className="font-bold text-zinc-100 text-sm">
-                  Aptechnosys — Jr Full Stack Developer
+                  Aptechnosys — Full Stack Developer
                 </h3>
                 <span className="text-zinc-400 font-mono text-xs">Since 5th March 2025 - Present</span>
               </div>

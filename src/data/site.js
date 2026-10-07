@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "MERN Stack Developer",
   role: "MERN Stack Developer / Full Stack Developer",
   currentCompany: "Aptechnosys",
-  currentRole: "Jr Full Stack Developer",
+  currentRole: "Full Stack Developer",
   currentSince: "March 2025 - Present",
   location: "Mumbai, India",
   experienceYears: "1.5+",
@@ -13,7 +13,7 @@ export const siteConfig = {
   resumePdfUrl: "/faiyaz_khan_resume.pdf",
   zipUrl: "/faiyaz-khan-portfolio.zip",
   tagline: "I build modern, scalable and production-ready web applications using React, Next.js, Node.js and MongoDB.",
-  bio: "Jr Full Stack Developer at Aptechnosys based in Mumbai with 1.5+ years of practical development experience. Specializing in high-performance web applications, candidate verification workflow platforms, REST APIs, and modern responsive interfaces with 94%+ Core Web Vitals.",
+  bio: "Full Stack Developer at Aptechnosys based in Mumbai with 1.5+ years of practical development experience. Specializing in high-performance web applications, candidate verification workflow platforms, REST APIs, and modern responsive interfaces with 94%+ Core Web Vitals.",
   
   availability: "Available for opportunities",
   
