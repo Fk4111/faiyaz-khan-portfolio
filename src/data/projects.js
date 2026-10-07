@@ -37,9 +37,7 @@ export const projectsData = [
       { label: "Security", value: "Helmet + Rate Limit" },
       { label: "Database", value: "MongoDB Atlas" }
     ],
-    liveUrl: "https://knk-partners.vercel.app",
-    renderUrl: "https://knkdashboard.onrender.com",
-    githubUrl: "https://github.com/Fk4111/knk-Dashboard.git",
+    liveUrl: "https://knkpartner.com",
     badge: "Flagship Production System",
     accentColor: "emerald"
   },
@@ -74,7 +72,7 @@ export const projectsData = [
       { label: "SEO Score", value: "100% Perfect" },
       { label: "Email Tech", value: "Resend API" }
     ],
-    liveUrl: "https://aptechnosys-website-nine.vercel.app/",
+    liveUrl: "https://aptechnosys.com/",
     githubUrl: "https://github.com/Fk4111/aptechnosysWebsite.git",
     badge: "Live Production Site",
     accentColor: "blue"
@@ -113,41 +111,6 @@ export const projectsData = [
     githubUrl: "https://github.com/Fk4111/equity_backtester.git",
     badge: "FinTech & Analytics",
     accentColor: "teal"
-  },
-  {
-    id: "whatsapp-clone",
-    title: "WhatsApp Web Clone",
-    subtitle: "Full-Duplex Real-Time Messaging Application",
-    featured: true,
-    tagline: "Real-time chat application with instant message synchronization, user presence tracking, and responsive web interface.",
-    type: "Real-Time Web Application",
-    description: "A high-fidelity WhatsApp Web clone featuring bidirectional socket messaging, user authentication, OAuth login, and responsive mobile-ready interface.",
-    detailedDescription: "Engineered a low-latency chat app using Socket.io and React. Supports real-time room communication, message persistence in MongoDB, typing indicators, read receipts, and user authentication with both JWT and OAuth.",
-    technologies: [
-      "React",
-      "Node.js",
-      "Express",
-      "Socket.io",
-      "OAuth",
-      "MongoDB"
-    ],
-    features: [
-      "Low-latency real-time messaging via Socket.io",
-      "JWT and Google OAuth social sign-in",
-      "Active chat conversations & contact search",
-      "Online/offline user presence indicators",
-      "Message timestamps, status ticks, and media previews",
-      "Mobile-responsive chat drawer & sidebar layout"
-    ],
-    metrics: [
-      { label: "Latency", value: "<50ms Sockets" },
-      { label: "Protocol", value: "WebSocket" },
-      { label: "Auth", value: "OAuth + JWT" }
-    ],
-    liveUrl: "https://whatsapp-web-clone.example.com",
-    githubUrl: "https://github.com/Fk4111",
-    badge: "Real-Time WebSockets",
-    accentColor: "emerald"
   },
   {
     id: "ai-tagline-generator",

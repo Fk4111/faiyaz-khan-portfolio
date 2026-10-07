@@ -1,8 +1,8 @@
 export const experienceData = [
   {
     id: "aptechnosys",
-    role: "Jr Full Stack Developer",
-    company: "Aptechnosys",
+    role: "Full Stack Developer",
+    company: "APTechnosys",
     location: "Mumbai, India",
     period: "March 2025 - Present",
     current: true,
@@ -34,23 +34,6 @@ export const experienceData = [
       "Conducted cross-browser compatibility testing and resolved mobile viewport layout inconsistencies."
     ],
     technologies: ["React.js", "JavaScript (ES6+)", "Node.js", "Express", "HTML5", "CSS3", "Git", "GitHub"]
-  },
-  {
-    id: "knk-workflow",
-    role: "Full Stack Developer (KNK Admin Panel)",
-    company: "KNK Partners Verification System",
-    location: "Mumbai, India",
-    period: "2.5 Months Project",
-    current: false,
-    type: "Contract / Project",
-    description: "Built a production-grade MERN court and candidate background verification system with multi-role access and automated status workflows.",
-    responsibilities: [
-      "Implemented role-based access control (Admin / User), case allocation, employee workload tracking, and real-time dashboard analytics.",
-      "Secured application with Helmet for HTTPS headers, Rate Limiter to guard against brute-force attacks, Compression middleware, and Joi payload validation.",
-      "Created Server-to-Server (S2S) status callback APIs, automated status pull endpoints, and audit trail logs for case histories.",
-      "Deployed frontend to Vercel and backend services to Render with persistent MongoDB Atlas database clusters."
-    ],
-    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS", "Joi", "Cors", "Helmet", "Axios", "Render"]
   }
 ];
 
